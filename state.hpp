@@ -13,7 +13,7 @@ public:
     // Llamado cuando cambia a otro estado
     virtual void deactivate() {}
 
-    //Las siguietnes funciones pueden ser sobrecargadas tanto como sea necesario en nuestros aldeanos
+    //Las siguietnes funciones pueden ser sobrecargadas tanto como sea 
     virtual void ProcessInput() {}
     virtual void Update( float dTime) {}
     virtual void LateUpdate(float dTime) {}

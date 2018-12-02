@@ -5,12 +5,11 @@
 #include "state.hpp"
 #include "fsm.hpp"
 #include "r_path.hpp"
-#include "resources.hpp"
 
 class SplashScreen : public State
 {
 public:
-    SplashScreen(ResourcePath& path, FSM& fsm, Window& window, Resources<sf::Texture>& textureAllocator);
+    SplashScreen(ResourcePath& path, FSM& fsm, Window& window);
 
     void init() override;
     void terminate() override;
@@ -24,15 +23,13 @@ public:
 private:
     sf::Texture splashTexture;
     sf::Sprite splashSprite;
+
     ResourcePath& path;
     FSM& fsm;
     Window& window;
-    Resources<sf::Texture>& textureAllocator;
-    float duration;//Queremos mostrar el estado para ponerlo durante una cantidad de tiempo
-
-    float elapsed;//cuantos estados han sido actualmente visibles
-
-    unsigned int switchToState;//El estado que nosotros queremos transferir cuando el tiempo espira ya
+    unsigned int switchToState;
+    float elapsed;
+    float duration;
 };
 
 #endif

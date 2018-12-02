@@ -1,10 +1,8 @@
 #ifndef APP_HPP
 #define APP_HPP
 
-#include <SFML/Graphics.hpp>
 #include "window.hpp"
 #include "r_path.hpp"
-#include "input.hpp"
 #include "fsm.hpp"
 #include "splashscreen.hpp"
 #include "gamestate.hpp"
@@ -22,7 +20,7 @@ public:
     void CaptureInput();
 private:
     Window window;
-    Resources<sf::Texture> textureAllocator;
+
     sf::Clock clock;
     float dTime;
 

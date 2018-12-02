@@ -1,47 +1,42 @@
 #include "gamestate.hpp"
 
-GameState::GameState(ResourcePath& path, Resources<sf::Texture>& textureAllocator)
- : path(path), textureAllocator(textureAllocator) {}
+GameState::GameState(ResourcePath& path) : path(path) { }
 
 void GameState::init() {
-    std::shared_ptr<Entity> player = std::make_shared<Entity>();
-    std::shared_ptr<Entity> background = std::make_shared<Entity>();
+    playerTexture.loadFromFile(path.Get() + "player.png");
+    player = Player(&playerTexture, sf::Vector2u(4, 4), 0.1f, 100.0f);
 
-    //Añadir textura al jugador
-    auto sprite = player->AddComponent<Sprite>();
-    sprite->SetTextureAllocator(&textureAllocator);
-    sprite->Load(path.Get() + "player.png");
-    sprite->setTextureRect(0,0,32,48);
 
-    // Añadir control
-    auto movement = player->AddComponent<PlayerControl>();
-    movement->SetInput(&input);//no olvidar la posicionalidad de la entrada, de otra manera el personaje no se movera
+    backTexture.loadFromFile(path.Get() + "background.png");
+    backSprite.setTexture(backTexture);
 
-    auto backsprite = background->AddComponent<Sprite>();
-    backsprite->SetTextureAllocator(&textureAllocator);
-    backsprite->Load(path.Get() + "background.png");
 
-    player->transform->SetPosition(400, 300);
-    // El orden en el que se añaden las entidades es el orden en que se dibujan
-    entities.Add(background);
-    entities.Add(player);
+    //Platform platform1(nullptr, sf::Vector2f(400.of, 200.0f), sf::Vector2f(500.0f, 200.0f));
 }
+
 void GameState::terminate() { }
 
 void GameState::ProcessInput() {
-    input.Update();
+    //input.Update();
 }
 
 void GameState::Update(float dTime) {
-    entities.ProcessRemovals();
-    entities.ProcessNewEntities();
-    entities.Update(dTime);
+    // const int speed = 150;
+    // float frameMove = speed * dTime;
+    // int xMove = 0;
+    // int yMove = 0;
+    // if (input.isKPressed(Input::Key::Up))  yMove = -frameMove;
+    // if (input.isKPressed(Input::Key::Down)) yMove = frameMove;
+    // if (input.isKPressed(Input::Key::Right)) xMove = frameMove;
+    // if (input.isKPressed(Input::Key::Left)) xMove = -frameMove;
+    // playerSprite.move(xMove, yMove);
 
-}
-
-void GameState::LateUpdate(float dTime) {
-    entities.LateUpdate(dTime);
+    player.Update(dTime);
+    //platform1.GetCollider().CheckCollision(player.GetCollider(),1.0f); // Valores entre 0 y 1
 }
 void GameState::Draw(Window& window) {
-    entities.Draw(window);//Esto dibujará nuestra coleccion
+    //platform1.Draw(window);
+    window.Draw(backSprite);
+    player.Draw(window);
+
 }

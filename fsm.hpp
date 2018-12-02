@@ -10,9 +10,6 @@
 class FSM {
 public:
     FSM();
-    //ProcessInput, Update y LateUpdate se simplifican
-    //al ser separados como metodos, ellos serán llamados por el
-    //nombre correspondiente de metodo que activan al estado
 
     virtual void ProcessInput();
     virtual void Update( float dTime);
