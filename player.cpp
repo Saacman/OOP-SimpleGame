@@ -39,6 +39,9 @@ void Player::Update(float deltaTime) {
         row = 3;
         moving = true;
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+        std::cout << "pew pew" << std::endl;
+    }
     lastRow = row;
     animation.Update(row, deltaTime, moving);
     body.setTextureRect(animation.getRect());
