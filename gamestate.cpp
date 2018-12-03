@@ -13,51 +13,56 @@ void GameState::init() {
     backTexture.loadFromFile(path.Get() + "background.png");
     backSprite.setTexture(backTexture);
     // Definiendo el vector de paredes
-    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(51.0f, 295.0f)));
-    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(182.0f, 295.0f)));
-    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(313.0f, 295.0f)));
-    walls.push_back(Box(sf::Vector2f(227.0f, 102.0f), sf::Vector2f(116.5f, 57.0f)));
+    walls.push_back(Box(sf::Vector2f(800.0f, 20.0f), sf::Vector2f(0.0f, -20.0f)));
+    walls.push_back(Box(sf::Vector2f(800.0f, 20.0f), sf::Vector2f(0.0f, 600.0f)));
+    walls.push_back(Box(sf::Vector2f(10.0f, 600.0f), sf::Vector2f(-10.0f, 0.0f)));
+    walls.push_back(Box(sf::Vector2f(10.0f, 600.0f), sf::Vector2f(800.0f, 0.0f)));
+    walls.push_back(Box(sf::Vector2f(373.0f, 307.0f), sf::Vector2f(427.0f, 74.0f)));
+    walls.push_back(Box(sf::Vector2f(291.0f, 74.0f), sf::Vector2f(509.0f, 0.0f)));
+    walls.push_back(Box(sf::Vector2f(65.0f, 68.0f), sf::Vector2f(2.0f, 482.0f)));
+    walls.push_back(Box(sf::Vector2f(65.0f, 68.0f), sf::Vector2f(296.5f, 482.0f)));
+    walls.push_back(Box(sf::Vector2f(373.0f, 118.0f), sf::Vector2f(427.0f, 482.0f)));
+    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(2.0f, 244.0f)));
+    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(133.0f, 244.0f)));
+    walls.push_back(Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(264.0f, 244.0f)));
+    walls.push_back(Box(sf::Vector2f(227.0f, 102.0f), sf::Vector2f(3.0f, 6.0f)));
+
+    // Definiendo las cajas de cambio de estado
+    switchBox.push_back(Box(sf::Vector2f(21.0f, 1.0f), sf::Vector2f(182.5f, 345.5f)));
+    switchBox.push_back(Box(sf::Vector2f(21.0f, 1.0f), sf::Vector2f(51.5f, 345.5f)));
+    switchBox.push_back(Box(sf::Vector2f(21.0f, 1.0f), sf::Vector2f(313.5f, 345.5f)));
 }
 
 void GameState::terminate() { }
 
 void GameState::SetSwitchToState(unsigned int id) {
+
 	// Almacena el id del estado al que pasará al terminar
+
     switchToState = id;
 }
 
 void GameState::Update(float dTime) {
     enemy1.Update(dTime);
-    if (player.GetPosition().x < 193.0f && player.GetPosition().x > 172.0f) {
-        if (player.GetPosition().y < 345.0f && player.GetPosition().y > 316.0f) {
-            fsm.SwitchTo(switchToState);
-        }
-    }
-    if (player.GetPosition().x < 62.0f && player.GetPosition().x > 41.0f) {
-        if (player.GetPosition().y < 345.0f && player.GetPosition().y > 316.0f) {
-            fsm.SwitchTo(switchToState);
-        }
-    }
-    if (player.GetPosition().x < 323.0f && player.GetPosition().x > 303.0f) {
-        if (player.GetPosition().y < 345.0f && player.GetPosition().y > 316.0f) {
-            fsm.SwitchTo(switchToState);
-        }
-    }
+
     player.CanMove();
     for( auto item = walls.begin(); item != walls.end(); item++ ) {
         if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds())) {
-            for(unsigned int i = 0; i <= 3; i++) {
-                if (player.GetDirection() == i)  player.CantMove(i);
-            }
+            for(unsigned int i = 0; i <= 3; i++) if (player.GetDirection() == i)  player.CantMove(i);
         }
     }
-
+    for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) {
+        if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds())) {
+            fsm.SwitchTo(switchToState);
+            player.GetBody().move(0, 20);
+        }
+    }
     player.Update(dTime);
 }
 void GameState::Draw(Window& window) {
     window.Draw(backSprite);
-    for( auto item = walls.begin(); item != walls.end(); item++ ) item->Draw(window);
+    //for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) item->Draw(window);
     player.Draw(window);
-    enemy1.Draw(window);
+    //enemy1.Draw(window);
 
 }

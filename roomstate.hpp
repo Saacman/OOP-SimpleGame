@@ -18,7 +18,7 @@ public:
     void terminate() override;
     void Update(float dTime) override;
     void Draw(Window& window) override;
-    void SetSwitchToState(unsigned int id);
+    void SetSwitchToState(unsigned int id) override;
 
 private:
     Player player;
@@ -26,6 +26,8 @@ private:
     sf::Sprite playerSprite;
     sf::Texture backTexture;
     sf::Sprite backSprite;
+    std::vector<Box> walls;
+    std::vector<Box> switchBox;
     ResourcePath& path;
     FSM& fsm;
     unsigned int switchToState;

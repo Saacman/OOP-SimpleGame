@@ -5,7 +5,7 @@ Player::Player() : row(0), speed(0.0f), direction(0) {}
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed)
 : animation(texture, imageCount, switchTime), speed(speed), direction(0) {
 // 40x60
-    body.setSize(sf::Vector2f(40.0f,60.0f));
+    body.setSize(sf::Vector2f(25.0f, 37.5f));
     body.setOrigin(body.getSize()/2.0f);
     body.setPosition(400.0f, 430.0f);
     body.setTexture(texture);

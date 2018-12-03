@@ -12,12 +12,11 @@ public:
     virtual void activate() {}
     // Llamado cuando cambia a otro estado
     virtual void deactivate() {}
+    virtual void SetSwitchToState(unsigned int id) {}
 
-    
-    virtual void ProcessInput() {}
-    virtual void Update( float dTime) {}
+    virtual void Update( float dTime) = 0;
     virtual void LateUpdate(float dTime) {}
-    virtual void Draw(Window& window) {}
+    virtual void Draw(Window& window) = 0;
 
 };
 

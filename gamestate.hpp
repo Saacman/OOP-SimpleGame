@@ -19,7 +19,7 @@ public:
     void terminate() override;
     void Update(float dTime) override;
     void Draw(Window& window) override;
-    void SetSwitchToState(unsigned int id);
+    void SetSwitchToState(unsigned int id) override;
 
 private:
     Player player;
@@ -28,10 +28,7 @@ private:
     sf::Texture backTexture;
     sf::Sprite backSprite;
     std::vector<Box> walls;
-    // Box house1;
-    // Box house2;
-    // Box house3;
-    // Box house4;
+    std::vector<Box> switchBox;
     ResourcePath& path;
     Enemy enemy1;
     FSM& fsm;

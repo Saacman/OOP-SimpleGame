@@ -23,7 +23,6 @@ public:
 private:
     sf::Texture splashTexture;
     sf::Sprite splashSprite;
-
     ResourcePath& path;
     FSM& fsm;
     Window& window;
