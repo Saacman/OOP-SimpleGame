@@ -2,7 +2,7 @@
 
 Box::Box() { }
 
-Box::Box(sf::Vector2f size, sf::Vector2f position) {
+Box::Box(sf::Vector2f size, sf::Vector2f position){
     body.setSize(size);
     body.setOrigin(size/2.0f);
     //body.setTexture(texture);
@@ -10,14 +10,17 @@ Box::Box(sf::Vector2f size, sf::Vector2f position) {
     body.setPosition(position);
 
 }
-Box::~Box() {
 
-}
+Box::~Box() { }
 
 void Box::Draw(Window& window) {
     window.Draw(body);
 }
 
+sf::RectangleShape Box::GetBody() {
+    return body;
+}
+//
 // Collider Box::GetCollider() {
-//     return Collider(body);
+//     return collider;
 // }
