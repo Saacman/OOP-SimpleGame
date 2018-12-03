@@ -9,8 +9,10 @@ void GameState::init() {
 
     backTexture.loadFromFile(path.Get() + "background.png");
     backSprite.setTexture(backTexture);
-    // platform1 = Platform(sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 200.0f));
-    // platform2 = Platform(sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 0.0f));
+    house1 = Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(51.0f, 295.0f));
+    house2 = Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(182.0f, 295.0f));
+    house3 = Box(sf::Vector2f(98.0f, 102.0f), sf::Vector2f(313.0f, 295.0f));
+    house4 = Box(sf::Vector2f(227.0f, 102.0f), sf::Vector2f(116.5f, 57.0f));
 }
 
 void GameState::terminate() { }
@@ -23,10 +25,11 @@ void GameState::Update(float dTime) {
     // platform2.GetCollider().CheckCollider(player.GetCollider(),1.0f); // Valores entre 0 y 1
 }
 void GameState::Draw(Window& window) {
-
     window.Draw(backSprite);
-    // platform1.Draw(window);
-    // platform2.Draw(window);
+    house1.Draw(window);
+    house2.Draw(window);
+    house3.Draw(window);
+    house4.Draw(window);
     player.Draw(window);
 
 }

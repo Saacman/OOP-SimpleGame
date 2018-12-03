@@ -5,7 +5,7 @@
 #include "r_path.hpp"
 //#include "input.hpp"
 #include "state.hpp"
-//#include "platform.hpp"
+#include "box.hpp"
 #include "player.hpp"
 #include "animation.hpp"
 //#include "collider.hpp"
@@ -24,8 +24,10 @@ private:
     sf::Sprite playerSprite;
     sf::Texture backTexture;
     sf::Sprite backSprite;
-    // Platform platform1;
-    // Platform platform2;
+    Box house1;
+    Box house2;
+    Box house3;
+    Box house4;
     ResourcePath& path;
 };
 #endif
