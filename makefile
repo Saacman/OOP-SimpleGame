@@ -13,8 +13,11 @@ OBJS += fsm.o
 OBJS += splashscreen.o
 OBJS += animation.o
 OBJS += player.o
-# OBJS += collider.o
+OBJS += bitmask.o
+#OBJS += collider.o
 OBJS += box.o
+OBJS += enemy.o
+OBJS += roomstate.o
 OBJS += -lsfml-graphics
 OBJS += -lsfml-window
 OBJS += -lsfml-system
@@ -44,12 +47,21 @@ fsm: fsm.cpp fsm.hpp
 animation: animation.cpp animation.hpp
 	g++ $(CPPFLAGS) -c animation.cpp
 
+bitmask: bitmask.cpp bitmask.hpp
+	g++ $(CPPFLAGS) -c bitmask.cpp
+
 player: player.cpp player.hpp
 	g++ $(CPPFLAGS) -c player.cpp
 
 # collider: collider.cpp collider.hpp
 # 	g++ $(CPPFLAGS) -c collider.cpp
-#
+
+enemy: enemy.cpp enemy.hpp
+	g++ $(CPPFLAGS) -c enemy.cpp
+
+roomstate: roomstate.cpp roomstate.hpp
+	g++ $(CPPFLAGS) -c roomstate.cpp
+
 box: box.cpp box.hpp
 	g++ $(CPPFLAGS) -c collider.cpp
 
