@@ -4,7 +4,8 @@
 #include "SFML/Graphics.hpp"
 #include "animation.hpp"
 #include "window.hpp"
-#include "collider.hpp"
+#include "bitmask.hpp"
+//#include "collider.hpp"
 class Player {
 public:
     Player();
@@ -14,14 +15,23 @@ public:
     void Update(float deltaTime);
     void Draw(Window& window);
     sf::Vector2f GetPosition();
+    sf::RectangleShape GetBody();
+    unsigned int GetDirection();
+    void CantMove(int index);
+    void CanMove();
+
     //Collider GetCollider();
 private:
+
     sf::RectangleShape body;
     Animation animation;
     unsigned int row;
     float speed;
-    unsigned int lastRow;
+    unsigned int direction;
     bool moving;
+    BitMask canMove;
+
+    //Collider collider;
 };
 
 #endif
