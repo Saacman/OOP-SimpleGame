@@ -24,7 +24,7 @@ void GameState::Update(float dTime) {
 }
 void GameState::Draw(Window& window) {
 
-    //window.Draw(backSprite);
+    window.Draw(backSprite);
     // platform1.Draw(window);
     // platform2.Draw(window);
     player.Draw(window);
