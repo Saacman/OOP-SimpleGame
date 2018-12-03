@@ -6,7 +6,7 @@
 #include "fsm.hpp"
 #include "splashscreen.hpp"
 #include "gamestate.hpp"
-
+#include "roomstate.hpp"
 class App {
 public:
     App();

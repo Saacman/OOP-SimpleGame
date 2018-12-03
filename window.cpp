@@ -22,7 +22,7 @@ void Window::Update() {
 
 //Deja la ventana en blanco, la limpia
 void Window::BeginDraw() {
-    m_target.clear(sf::Color::White);
+    m_target.clear(sf::Color::Black);
 }
 
 //Metodo de mutación que carga el dibujable
