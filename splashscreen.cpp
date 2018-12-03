@@ -1,5 +1,5 @@
 #include "splashscreen.hpp"
-SplashScreen::SplashScreen(ResourcePath& path, FSM& fsm, Window& window) : path(path), fsm(fsm), 
+SplashScreen::SplashScreen(ResourcePath& path, FSM& fsm, Window& window) : path(path), fsm(fsm),
 window(window), switchToState(0), elapsed(0.f), duration(3.f) { }
 //La duracion de la splash screen es 3 segundos
 

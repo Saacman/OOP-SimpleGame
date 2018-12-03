@@ -4,6 +4,7 @@
 #include "SFML/Graphics.hpp"
 #include "animation.hpp"
 #include "window.hpp"
+#include "collider.hpp"
 class Player {
 public:
     Player();
@@ -13,13 +14,14 @@ public:
     void Update(float deltaTime);
     void Draw(Window& window);
     sf::Vector2f GetPosition();
-    //Collision GetCollider();
+    //Collider GetCollider();
 private:
     sf::RectangleShape body;
     Animation animation;
     unsigned int row;
     float speed;
-    //bool faceRight;
+    unsigned int lastRow;
+    bool moving;
 };
 
 #endif

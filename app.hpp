@@ -17,7 +17,6 @@ public:
 
     bool IsRunning() const;
     void GetdTime();
-    void CaptureInput();
 private:
     Window window;
 

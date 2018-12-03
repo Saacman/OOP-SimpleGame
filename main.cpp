@@ -6,7 +6,6 @@ int main() {
 
     //Crea un ciclo con el cual se permitirá  llamar las funciones de app siempre y cuando este corriendo
     while (app.IsRunning()) {
-        app.CaptureInput();
         app.Update();
         app.LateUpdate();
         app.Draw();
@@ -14,4 +13,3 @@ int main() {
     }
     return 0;
 }
-

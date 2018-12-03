@@ -13,6 +13,8 @@ OBJS += fsm.o
 OBJS += splashscreen.o
 OBJS += animation.o
 OBJS += player.o
+# OBJS += collider.o
+# OBJS += platform.o
 OBJS += -lsfml-graphics
 OBJS += -lsfml-window
 OBJS += -lsfml-system
@@ -44,6 +46,12 @@ animation: animation.cpp animation.hpp
 
 player: player.cpp player.hpp
 	g++ $(CPPFLAGS) -c player.cpp
+
+# collider: collider.cpp collider.hpp
+# 	g++ $(CPPFLAGS) -c collider.cpp
+#
+# platform: platform.cpp platform.hpp
+# 	g++ $(CPPFLAGS) -c collider.cpp
 
 main: main.cpp
 	g++ $(CPPFLAGS) -c main.cpp

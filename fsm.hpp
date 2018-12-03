@@ -11,7 +11,6 @@ class FSM {
 public:
     FSM();
 
-    virtual void ProcessInput();
     virtual void Update( float dTime);
     virtual void LateUpdate(float dTime);
     virtual void Draw(Window& window);

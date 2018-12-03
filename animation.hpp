@@ -9,7 +9,7 @@ public:
     Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
     ~Animation();
 
-    void Update(int row, float deltaTime);
+    void Update(int row, float deltaTime, bool moving);
 
     sf::IntRect getRect();
 

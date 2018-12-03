@@ -6,17 +6,15 @@
 //#include "input.hpp"
 #include "state.hpp"
 //#include "platform.hpp"
-//#include "resources.hpp"
 #include "player.hpp"
 #include "animation.hpp"
+//#include "collider.hpp"
 class GameState : public State {
 public:
-    GameState(ResourcePath& path);
+    GameState(ResourcePath& Path);
 
     void init() override;
     void terminate() override;
-
-    void ProcessInput() override;
     void Update(float dTime) override;
     void Draw(Window& window) override;
 
@@ -26,8 +24,8 @@ private:
     sf::Sprite playerSprite;
     sf::Texture backTexture;
     sf::Sprite backSprite;
-
+    // Platform platform1;
+    // Platform platform2;
     ResourcePath& path;
-    //Input input;
 };
 #endif

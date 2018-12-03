@@ -2,11 +2,6 @@
 // Constructor por defecto
 FSM::FSM() : states(0), currentState(0) { }
 
-void FSM::ProcessInput() {
-    if(currentState) {
-        currentState->ProcessInput();
-    }
-}
 void FSM::Update( float dTime) {
     if(currentState) {
         currentState->Update(dTime);

@@ -36,7 +36,3 @@ bool App::IsRunning() const {
 void App::GetdTime() {
     dTime = clock.restart().asSeconds();
 }
-void App::CaptureInput()
-{
-    fsm.ProcessInput();
-}
