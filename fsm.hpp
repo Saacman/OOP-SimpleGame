@@ -2,17 +2,19 @@
 #define FSM_HPP
 
 #include <memory>
-
 #include "state.hpp"
 #include "window.hpp"
 #include <unordered_map>
+
+// Máquina de estados finitos. Con ella se administran los estados de juego.
+// Utiliza punteros inteligentes para crear los estados y almacenarlos en un par junto con ID
+// Los pares son almacenados en un unordered_map
 
 class FSM {
 public:
     FSM();
 
     virtual void Update( float dTime);
-    virtual void LateUpdate(float dTime);
     virtual void Draw(Window& window);
 
     // Añadir estados a la FSM, retorna el ID del estado insertado

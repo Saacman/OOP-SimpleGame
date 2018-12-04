@@ -5,7 +5,10 @@
 #include "animation.hpp"
 #include "window.hpp"
 #include "bitmask.hpp"
-//#include "collider.hpp"
+
+// Clase del jugador.
+// Define la lógica de la animación e implementa métodos necesarios.
+
 class Player {
 public:
     Player();
@@ -20,7 +23,7 @@ public:
     void CantMove(int index);
     void CanMove();
     bool Action();
-    //Collider GetCollider();
+
 private:
 
     sf::RectangleShape body;
@@ -31,7 +34,7 @@ private:
     bool moving;
     BitMask canMove;
     bool action;
-    //Collider collider;
+
 };
 
 #endif

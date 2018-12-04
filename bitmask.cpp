@@ -17,7 +17,7 @@ void BitMask::Clear() {
     m_bits = 0;
 }
 
-//Devuelve verdadero si bit en pos = 1, sino falso.
+//Devuelve verdadero si bit en pos = 1, si no falso.
 bool BitMask::getBit(int index) const {
     //retorna un valor boleano de la operación and, indica si hay un  bit en esa posición
     return (m_bits & (1 << index)) != 0;

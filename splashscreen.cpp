@@ -26,8 +26,6 @@ void SplashScreen::activate() {
 	elapsed= 0.f;
 }
 
-void SplashScreen::terminate() { }
-
 void SplashScreen::SetSwitchToState(unsigned int id) {
 	// Almacena el id del estado al que pasará al terminar
     switchToState = id;

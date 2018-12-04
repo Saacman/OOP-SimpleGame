@@ -3,13 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
+
+//Esta clase abstrae los métodos para las ventanas de sfml
 class Window {
 public:
     Window(const std::string& Name);
-
-
     void Update();
-
     void BeginDraw();
     void Draw(const sf::Drawable& drawable);
     void EndDraw();

@@ -8,12 +8,16 @@
 #include "player.hpp"
 #include "animation.hpp"
 #include "fsm.hpp"
+
+// Clase del "primer nivel" o primer pantalla de juego.
+// Se deriva de state para ser administrada por la fsm
+// En ella se declaran e inicializan los elementos del estado
+
 class GameState : public State {
 public:
     GameState(ResourcePath& Path, FSM& fsm);
 
     void init() override;
-    void terminate() override;
     void Update(float dTime) override;
     void Draw(Window& window) override;
     void SetSwitchToState(unsigned int id) override;

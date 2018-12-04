@@ -1,5 +1,6 @@
 #include "app.hpp"
 
+// Constructor por defecto. Inicializa la maquina de estados con punteros compartidos a los estados de juego.
 App::App() : window(" Proyecto Final ") {
     // Creamos los estados
     std::shared_ptr<SplashScreen> splashScreen = std::make_shared<SplashScreen>(path, fsm, window);
@@ -17,26 +18,25 @@ App::App() : window(" Proyecto Final ") {
     dTime = clock.restart().asSeconds();
 }
 
+// Actualiza los eventos de la ventana y pasa el tiempo delta a la fsm
 void App::Update() {
     window.Update(); // Linea importante, sin ella la ventana no responde
     fsm.Update(dTime);
 }
-void App::LateUpdate() {
-    fsm.LateUpdate(dTime);
-}
 
+// El proceso de dibujo. Limpia la venta, dibuja los elementos a mostrar y los coloca en la ventana
 void App::Draw() {
     window.BeginDraw();
-
     fsm.Draw(window);
-
     window.EndDraw();
 }
 
+// Verifica que la venta se encuentre abierta
 bool App::IsRunning() const {
     return window.IsOpen();
 }
 
+// Obtiene el tiempo transcurrido entre cada ciclo.
 void App::GetdTime() {
     dTime = clock.restart().asSeconds();
 }

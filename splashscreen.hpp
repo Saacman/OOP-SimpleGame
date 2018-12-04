@@ -6,13 +6,14 @@
 #include "fsm.hpp"
 #include "r_path.hpp"
 
+// Estado que se muestra al inicio del juego durante 3 segundos.
+
 class SplashScreen : public State
 {
 public:
     SplashScreen(ResourcePath& path, FSM& fsm, Window& window);
 
     void init() override;
-    void terminate() override;
     void activate() override;
 
     void SetSwitchToState(unsigned int id);

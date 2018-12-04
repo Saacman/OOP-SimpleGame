@@ -1,7 +1,7 @@
 #include "r_path.hpp"
 
-//Obtiene por default el directorio de los recursos del proyecto
+//Retorna la ruta de los recursos del proyecto, de esta forma se puede contatenar con el nombre del archivo necesitado
 ResourcePath::ResourcePath() {
     path = "Resources/";
-    //path = "./ usar por ser linux la plataforma de desarrollo";
+    //path = ./ u
 }

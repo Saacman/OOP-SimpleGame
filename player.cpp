@@ -1,7 +1,10 @@
 #include "player.hpp"
 #include <iostream>
+
+// Constructor por defecto
 Player::Player() : row(0), speed(0.0f), direction(0) {}
 
+// El constructor solicita un puntero a una textura, la malla del spritesheet, el tiempo de camboo de frame.
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed)
 : animation(texture, imageCount, switchTime), speed(speed), direction(0) {
 // 40x60
@@ -12,7 +15,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     action = false;
 }
 Player::~Player() {}
-
+// Lógica de movimiento y boton de acción
 void Player::Update(float deltaTime) {
     row = direction;
     moving = false;
@@ -59,32 +62,37 @@ void Player::Update(float deltaTime) {
     body.move(movement);
 }
 
+// Dibujar el cuerpo en la ventana
 void Player::Draw(Window& window) {
     window.Draw(body);
 }
 
+// Retorna un vector a la posición actual
 sf::Vector2f Player::GetPosition() {
     return body.getPosition();
 }
 
+// Retorna el cuerpo del personaje
 sf::RectangleShape Player::GetBody() {
     return body;
 }
 
+// Retorna la variable de dirección el fram anterior
 unsigned int Player::GetDirection(){
     return direction;
 }
+
+// coloca un 0 en la mascara de bits que indica si es posible moverse en la dirección indicada
 void Player::CantMove(int index) {
     canMove.setBit(index);
 }
+
+// Limpia la mascara de bits para liberar el movimiento
 void Player::CanMove() {
     canMove.Clear();
 }
 
+//Retorna un booleano si se estra realizando una acción
 bool Player::Action() {
     return action;
 }
-//
-// Collider Player::GetCollider() {
-//     return collider;
-// }

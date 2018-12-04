@@ -1,6 +1,6 @@
-#
 # MAKEFILE
 #
+# MakeFile creada para compilación de este proyecto
 
 PROGNAME = test
 CPPFLAGS = -std=c++14 -Wall

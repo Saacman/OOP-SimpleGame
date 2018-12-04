@@ -3,12 +3,14 @@
 
 #include <stdint.h>
 
+// Mascara de Bits-
+// Cadena de bits en la que podemos almacenar valores booleanos en cada posición.
+
 class BitMask {
 public:
     BitMask();
     BitMask(const BitMask& original);
-    // Metodos para obtener y modificar la mascara
-    //void setMask(BitMask& other);
+
     uint32_t getMask() const;
     void Clear(); // Vacia la mascara
 

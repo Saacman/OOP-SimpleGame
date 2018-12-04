@@ -22,8 +22,6 @@ void RoomState::init() {
     switchBox.push_back(Box(Box(sf::Vector2f(40.0f, 1.0f), sf::Vector2f(380.0f, 539.0f))));
 }
 
-void RoomState::terminate() { }
-
 void RoomState::SetSwitchToState(unsigned int id) {
 
 	// Almacena el id del estado al que pasará al terminar

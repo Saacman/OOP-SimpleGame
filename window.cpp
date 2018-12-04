@@ -1,9 +1,7 @@
 #include "window.hpp"
 
-//Constructor con el nombre de la ventana
+//Constructor con la resolución,  nombre de la ventana,  y el estilo. Ademas rActiva la sincronización vertical
 Window::Window(const std::string& Name) : m_target( sf::VideoMode(800,600), Name, sf::Style::Default ) {
-    // Window es un objeto no copiable
-    //m_target = sf::RenderWindow( sf::VideoMode(800,600), Name, sf::Style::Titlebar );
     m_target.setVerticalSyncEnabled(true);
 }
 
@@ -20,17 +18,17 @@ void Window::Update() {
 
 }
 
-//Deja la ventana en blanco, la limpia
+// Limpia los objetos de la ventana del último estado
 void Window::BeginDraw() {
     m_target.clear(sf::Color::Black);
 }
 
-//Metodo de mutación que carga el dibujable
+// Coloca ls sprites o "dibujables" del estado actual en la ventana
 void Window::Draw(const sf::Drawable& drawable) {
     m_target.draw(drawable);
 }
 
-//Función que muestra los dibujos en pantalla
+//Muestra los dibujos en la ventana
 void Window::EndDraw() {
     m_target.display();
 }

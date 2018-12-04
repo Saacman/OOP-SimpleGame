@@ -1,5 +1,6 @@
 #include "animation.hpp"
 
+// Constructor por defecto
 Animation::Animation() : switchTime(0.0), totalTime(0.0) {}
 
 Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime) :
@@ -9,8 +10,11 @@ imageCount(imageCount), switchTime(switchTime), totalTime(0.0f){
     uvRect.height = texture -> getSize().y / float(imageCount.y);
 }
 
+// Destructor
 Animation::~Animation(){ }
 
+// Update actualiza el frame de acuerdo a la posición recibida, el tiempo transcurrido
+// y la bandera de movimiento.
 void Animation::Update(int row, float deltaTime, bool moving){
     currentImage.y = row;
     totalTime += deltaTime;
@@ -25,6 +29,7 @@ void Animation::Update(int row, float deltaTime, bool moving){
 
 }
 
+// Retorna el rectangulo entero sobre el que trabaja
 sf::IntRect Animation::getRect() {
     return uvRect;
 }

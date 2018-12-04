@@ -4,8 +4,9 @@
 
 GameState::GameState(ResourcePath& Path, FSM& fsm) : path(Path), fsm(fsm), switchToState(0) { }
 
-
+// Iniializa el estado
 void GameState::init() {
+    // Iniciando al jugador
     playerTexture.loadFromFile(path.Get() + "player.png");
     player = Player(&playerTexture, sf::Vector2u(4, 4), 0.1f, 100.0f);
 
@@ -32,20 +33,22 @@ void GameState::init() {
     switchBox.push_back(Box(sf::Vector2f(21.0f, 1.0f), sf::Vector2f(313.5f, 345.5f)));
 }
 
-void GameState::terminate() { }
-
+// Asgina el estado al que pasará el activo
 void GameState::SetSwitchToState(unsigned int id) {
     switchToState = id;
 }
 
+// Actualizar la lógica según dTime
 void GameState::Update(float dTime) {
 
     player.CanMove();
+    // A través de un iterador revisa las coliciones con las paredes
     for( auto item = walls.begin(); item != walls.end(); item++ ) {
         if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds())) {
             for(unsigned int i = 0; i <= 3; i++) if (player.GetDirection() == i)  player.CantMove(i);
         }
     }
+    // A través de un iterador revisa el cambio de estado.
     for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) {
         if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds()) && player.Action()) {
             fsm.SwitchTo(switchToState);
@@ -58,6 +61,6 @@ void GameState::Draw(Window& window) {
     window.Draw(backSprite);
     //for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) item->Draw(window);
     player.Draw(window);
-    //enemy1.Draw(window);
+    
 
 }

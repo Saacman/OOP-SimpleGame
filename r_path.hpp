@@ -3,6 +3,9 @@
 
 #include <string>
 class ResourcePath {
+
+// Esta clase retorna un String con la dirección de los recursos utilizados.
+
 public:
     ResourcePath();
     //Obtiene el arreglo cadena de la ubicación raíz

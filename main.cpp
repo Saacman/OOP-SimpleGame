@@ -6,17 +6,16 @@
 int main() {
     //Crea el objeto "motor" para gestionar el juego
     App app;
+    // Carga la música
     sf::Music music;
     if (!music.openFromFile("Resources/prueba1.Ogg")) {
         return EXIT_FAILURE;
     }
-
     // Iniciar musica
     music.play();
-    //Crea un ciclo con el cual se permitirá  llamar las funciones de app siempre y cuando este corriendo
+    //Cicl de Juego
     while (app.IsRunning()) {
         app.Update();
-        app.LateUpdate();
         app.Draw();
         app.GetdTime();
     }
