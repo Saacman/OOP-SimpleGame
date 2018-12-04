@@ -14,13 +14,12 @@ OBJS += splashscreen.o
 OBJS += animation.o
 OBJS += player.o
 OBJS += bitmask.o
-#OBJS += collider.o
 OBJS += box.o
-OBJS += enemy.o
 OBJS += roomstate.o
 OBJS += -lsfml-graphics
 OBJS += -lsfml-window
 OBJS += -lsfml-system
+OBJS += -lsfml-audio
 
 
 all: $(OBJS)
@@ -52,12 +51,6 @@ bitmask: bitmask.cpp bitmask.hpp
 
 player: player.cpp player.hpp
 	g++ $(CPPFLAGS) -c player.cpp
-
-# collider: collider.cpp collider.hpp
-# 	g++ $(CPPFLAGS) -c collider.cpp
-
-enemy: enemy.cpp enemy.hpp
-	g++ $(CPPFLAGS) -c enemy.cpp
 
 roomstate: roomstate.cpp roomstate.hpp
 	g++ $(CPPFLAGS) -c roomstate.cpp

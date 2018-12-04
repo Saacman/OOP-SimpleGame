@@ -10,6 +10,7 @@ void RoomState::init() {
     backTexture.loadFromFile(path.Get() + "indoor.png");
     backSprite.setTexture(backTexture);
     backSprite.setPosition(160,60);
+
     // Vector de paredes
     walls.push_back(Box(sf::Vector2f(160.00f, 600.0f), sf::Vector2f(12.0f, 0.0f)));
     walls.push_back(Box(sf::Vector2f(160.00f, 600.0f), sf::Vector2f(632.0f, 0.0f)));
@@ -37,7 +38,7 @@ void RoomState::Update(float dTime) {
         }
     }
     for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) {
-        if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds())) {
+        if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds()) && player.Action()) {
             fsm.SwitchTo(switchToState);
             // Movemos al jugador 10px arriba de la caja de estado
             player.GetBody().move(0, -20);
@@ -46,10 +47,10 @@ void RoomState::Update(float dTime) {
     player.Update(dTime);
 
 }
+
 void RoomState::Draw(Window& window) {
     window.Draw(backSprite);
-    for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) item->Draw(window);
+    //for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) item->Draw(window);
     //for( auto item = walls.begin(); item != walls.end(); item++ ) item->Draw(window);
-
     player.Draw(window);
 }

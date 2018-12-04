@@ -3,13 +3,10 @@
 
 #include "window.hpp"
 #include "r_path.hpp"
-//#include "input.hpp"
 #include "state.hpp"
 #include "box.hpp"
 #include "player.hpp"
 #include "animation.hpp"
-//#include "collider.hpp"
-#include "enemy.hpp"
 #include "fsm.hpp"
 class GameState : public State {
 public:
@@ -30,7 +27,6 @@ private:
     std::vector<Box> walls;
     std::vector<Box> switchBox;
     ResourcePath& path;
-    Enemy enemy1;
     FSM& fsm;
     unsigned int switchToState;
 };

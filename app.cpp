@@ -13,7 +13,6 @@ App::App() : window(" Proyecto Final ") {
     splashScreen->SetSwitchToState(gameStateID);
     gameState->SetSwitchToState(roomStateID);
     roomState->SetSwitchToState(gameStateID);
-
     fsm.SwitchTo(splashScreenID);
     dTime = clock.restart().asSeconds();
 }

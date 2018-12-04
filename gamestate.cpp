@@ -8,7 +8,6 @@ GameState::GameState(ResourcePath& Path, FSM& fsm) : path(Path), fsm(fsm), switc
 void GameState::init() {
     playerTexture.loadFromFile(path.Get() + "player.png");
     player = Player(&playerTexture, sf::Vector2u(4, 4), 0.1f, 100.0f);
-    enemy1 = Enemy(nullptr, sf::Vector2u(4, 4), 0.1f, 100.0f);
 
     backTexture.loadFromFile(path.Get() + "background.png");
     backSprite.setTexture(backTexture);
@@ -36,14 +35,10 @@ void GameState::init() {
 void GameState::terminate() { }
 
 void GameState::SetSwitchToState(unsigned int id) {
-
-	// Almacena el id del estado al que pasará al terminar
-
     switchToState = id;
 }
 
 void GameState::Update(float dTime) {
-    enemy1.Update(dTime);
 
     player.CanMove();
     for( auto item = walls.begin(); item != walls.end(); item++ ) {
@@ -52,7 +47,7 @@ void GameState::Update(float dTime) {
         }
     }
     for( auto item = switchBox.begin(); item != switchBox.end(); item++ ) {
-        if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds())) {
+        if(player.GetBody().getGlobalBounds().intersects(item->GetBody().getGlobalBounds()) && player.Action()) {
             fsm.SwitchTo(switchToState);
             player.GetBody().move(0, 20);
         }

@@ -19,7 +19,7 @@ public:
     unsigned int GetDirection();
     void CantMove(int index);
     void CanMove();
-
+    bool Action();
     //Collider GetCollider();
 private:
 
@@ -30,7 +30,7 @@ private:
     unsigned int direction;
     bool moving;
     BitMask canMove;
-
+    bool action;
     //Collider collider;
 };
 

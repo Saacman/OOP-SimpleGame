@@ -9,12 +9,14 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     body.setOrigin(body.getSize()/2.0f);
     body.setPosition(400.0f, 430.0f);
     body.setTexture(texture);
+    action = false;
 }
 Player::~Player() {}
 
 void Player::Update(float deltaTime) {
     row = direction;
     moving = false;
+    action = false;
     sf::Vector2f movement(0.0f, 0.0f);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         if(!canMove.getBit(0)) {
@@ -48,6 +50,7 @@ void Player::Update(float deltaTime) {
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+        action = true;
         std::cout << "pew pew" << std::endl;
     }
     direction = row;
@@ -76,6 +79,10 @@ void Player::CantMove(int index) {
 }
 void Player::CanMove() {
     canMove.Clear();
+}
+
+bool Player::Action() {
+    return action;
 }
 //
 // Collider Player::GetCollider() {
